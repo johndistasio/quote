@@ -8,9 +8,11 @@ import (
 	"strings"
 )
 
-var singleFlag = flag.Bool("single", false, "use single quotes")
-var noFlag = flag.Bool("no", false, "don't quote")
-var spaceFlag = flag.Bool("space", false, "escape spaces")
+var (
+	noFlag     = flag.Bool("no", false, "don't quote")
+	singleFlag = flag.Bool("single", false, "use single quotes")
+	spaceFlag  = flag.Bool("space", false, "escape spaces")
+)
 
 func main() {
 	flag.Parse()
