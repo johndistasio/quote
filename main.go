@@ -10,6 +10,7 @@ import (
 
 var (
 	noFlag     = flag.Bool("no", false, "don't quote")
+	nullFlag   = flag.Bool("0", false, "output null instead of newline")
 	singleFlag = flag.Bool("single", false, "use single quotes")
 	spaceFlag  = flag.Bool("space", false, "escape spaces")
 )
@@ -21,6 +22,12 @@ func main() {
 
 	if *singleFlag {
 		quote = `'`
+	}
+
+	terminator := "\n"
+
+	if *nullFlag {
+		terminator = "\u0000"
 	}
 
 	scanner := bufio.NewScanner(os.Stdin)
@@ -36,7 +43,7 @@ func main() {
 			line = strings.ReplaceAll(line, ` `, `\ `)
 		}
 
-		fmt.Printf("%s%s%s\n", quote, line, quote)
+		fmt.Printf("%s%s%s%s", quote, line, quote, terminator)
 	}
 
 	if err := scanner.Err(); err != nil {
