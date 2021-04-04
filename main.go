@@ -9,14 +9,26 @@ import (
 )
 
 var (
-	noFlag     = flag.Bool("no", false, "don't quote")
-	nullFlag   = flag.Bool("0", false, "output null instead of newline")
-	singleFlag = flag.Bool("single", false, "use single quotes")
-	spaceFlag  = flag.Bool("space", false, "escape spaces")
+	commit      string
+	version     = "devel"
+	noFlag      = flag.Bool("no", false, "don't quote")
+	nullFlag    = flag.Bool("0", false, "output null instead of newline")
+	singleFlag  = flag.Bool("single", false, "use single quotes")
+	spaceFlag   = flag.Bool("space", false, "escape spaces")
+	versionFlag = flag.Bool("version", false, "show version and exit")
 )
 
 func main() {
 	flag.Parse()
+
+	if *versionFlag {
+		if commit != "" {
+			commit += " "
+		}
+
+		fmt.Printf("%s%s\n", commit, version)
+		os.Exit(0)
+	}
 
 	quote := `"`
 
