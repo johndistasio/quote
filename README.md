@@ -5,7 +5,7 @@ A small utility for quoting and escaping shell pipeline inputs. Useful when proc
 ### Usage
 
 ```
-Usage of dist/quote_linux_amd64/quote:
+Usage of quote:
   -0	output null instead of newline
   -no
     	don't quote
