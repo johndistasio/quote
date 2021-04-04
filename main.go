@@ -26,7 +26,7 @@ func main() {
 			commit += " "
 		}
 
-		fmt.Printf("%s(%s)\n", commit, version)
+		fmt.Printf("%s%s\n", commit, version)
 		os.Exit(0)
 	}
 
